@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+
 import Form from './Form';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
 
   const onSubmit = () => {
     setMembers([values, ...members]);
+    setValues({name: '', email: '', role: ''})
   }
   const onChange = (name, value) => {
     setValues({...values, [name]: value});
@@ -22,6 +24,13 @@ function App() {
         change = {onChange}
         submit = {onSubmit}
       />
+      {members.map((member, idx) => {
+        return (
+          <div key = {idx}>
+            {member.name}, {member.email},{member.role}
+          </div>
+        )
+      })}
     </div>
   );
 }
